@@ -23,8 +23,11 @@ export default function Challenge({ quote, setSelect, canSelect }) {
     let splitCurrentW = splitQuote[typedWords].split("");
     let textSplit = event.target.value.split("");
 
+    if (event.target.value == "") 
+      spanEle.style.color = 'black'
+
     textSplit.forEach((alphabet, index) => {
-      if (alphabet == " ") return;
+      if ((alphabet == " ") || (event.target.value == "")) return;
       if (splitCurrentW[index] == alphabet) 
         spanEle.style.color = "green"
       else
