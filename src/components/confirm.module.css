@@ -1,0 +1,18 @@
+.confirm{
+    display: block;
+    width: 150px;
+    height: 45px;
+    margin: auto;
+    background-color: skyblue;
+    border: 3px solid grey;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: 0.2s ease
+}
+
+.confirm:hover{
+    cursor: pointer;
+    text-decoration-color: black;
+    border-radius: 10px;
+}

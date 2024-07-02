@@ -1,0 +1,10 @@
+.Header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(253, 177, 38);
+    height: 10vh;
+    box-shadow: 0px 0px 1rem 0px grey;
+    color: gray;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
