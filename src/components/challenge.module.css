@@ -1,42 +1,40 @@
-.mainDiv{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin: auto;
-    margin-top: 0.5rem;
-    width: 50vw;
-    height: 250px;
+.mainDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  width: 50vw;
+  height: 250px;
 }
 
-.quoteDiv{
-    padding: 1rem;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+.span {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.typeText{
-    text-align: center;
-    width: 50%;
-    height: 15%;
-    font-size: large;
-    border: 3px solid grey;
+.typeText {
+  text-align: center;
+  width: 50%;
+  height: 15%;
+  font-size: large;
+  border: 3px solid grey;
 }
 
-.cancel{
-    width: 20%;
-    height: 15%;
-    background-color: skyblue;
-    border: 3px solid grey;
-    font-weight: bold;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    transition: 0.2s ease
+.cancel {
+  width: 20%;
+  height: 15%;
+  background-color: skyblue;
+  border: 3px solid grey;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: 0.2s ease;
 }
 
-.cancel:hover{
-    cursor: pointer;
-    text-decoration-color: black;
-    border-radius: 10px;
+.cancel:hover {
+  cursor: pointer;
+  text-decoration-color: black;
+  border-radius: 10px;
 }

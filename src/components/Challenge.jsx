@@ -1,7 +1,8 @@
+import React from "react";
 import { useEffect, useRef, useState } from "react";
 import styles from "./challenge.module.css";
 
-export default function Challenge({ quote, setSelect, canSelect}) {
+export default function Challenge({ quote, setSelect, canSelect }) {
   // states:
   const [typedWords, setTypedWords] = useState(0);
   const [text, setText] = useState("");
@@ -11,18 +12,37 @@ export default function Challenge({ quote, setSelect, canSelect}) {
 
   // refs:
   const typedWordsRef = useRef(0);
+  const hasStarted = useRef(false);
 
   useEffect(() => {
     typedWordsRef.current = typedWords;
   }, [typedWords]);
 
   function handleChange(event) {
+    let spanEle = document.getElementById(typedWords);
+    let splitCurrentW = splitQuote[typedWords].split("");
+    let textSplit = event.target.value.split("");
+
+    textSplit.forEach((alphabet, index) => {
+      if (alphabet == " ") return;
+      if (splitCurrentW[index] == alphabet) 
+        spanEle.style.color = "green"
+      else
+        spanEle.style.color = "red"
+    })
+
+    hasStarted.current = true;
     setText(event.target.value);
-    if (splitQuote[typedWords] + " " == event.target.value) {
+    if (
+      splitQuote[typedWords] + " " == event.target.value ||
+      (typedWords + 1 == splitQuote.length &&
+        splitQuote[typedWords] == event.target.value)
+    ) {
       setTypedWords(typedWords + 1);
       setText("");
       if (typedWords == splitQuote.length - 1) {
-        setSelect(true)
+        hasStarted.current = false;
+        setTimeout(() => setSelect(true), 2000)
       }
     }
   }
@@ -32,17 +52,30 @@ export default function Challenge({ quote, setSelect, canSelect}) {
     let wpm;
     setWpm(0);
     const interval = setInterval(() => {
+      if (!hasStarted.current) return;
       secondsPassed++;
       wpm = Math.round(typedWordsRef.current / (secondsPassed / 60));
       setWpm(wpm);
     }, 1000);
 
-    return () => { clearInterval(interval); alert(`Final WPM: ${wpm}`)}
+    return () => {
+      clearInterval(interval);
+      alert(`Final WPM: ${wpm}`);
+    };
   }, [canSelect]);
 
   return (
     <div className={styles.mainDiv}>
-      <div className={styles.quoteDiv}>{quote}</div>
+      <div id="quoteDiv">
+        {splitQuote.map((word, index) => (
+          <React.Fragment key={index}>
+            <span key={index} id={index} className={styles.span}>
+              {word}
+            </span>
+            <span key={index - 1}> </span>
+          </React.Fragment>
+        ))}
+      </div>
       <input
         onChange={handleChange}
         className={styles.typeText}
