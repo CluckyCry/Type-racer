@@ -8,11 +8,12 @@
     font-weight: bold;
     text-decoration: underline;
     text-decoration-color: transparent;
-    transition: 0.2s ease
+    transition: all 0.2s ease;
 }
 
 .confirm:hover{
     cursor: pointer;
     text-decoration-color: black;
     border-radius: 10px;
+    translate: 0px 0.2rem;
 }

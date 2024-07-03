@@ -1,7 +1,19 @@
 .label{
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.75rem
+}
+
+.text{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    transition: all 0.1s ease;
 }
 
 .input{
     margin-left: 0.5rem;
+    transition: all 0.1s ease;
+}
+
+.text:hover{
+    margin-right: 0.3rem;
+    color: purple;
 }

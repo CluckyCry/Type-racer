@@ -52,7 +52,7 @@ export default function Challenge({ quote, setSelect, canSelect }) {
 
   useEffect(() => {
     let secondsPassed = 0;
-    let wpm;
+    let wpm = 0
     setWpm(0);
     const interval = setInterval(() => {
       if (!hasStarted.current) return;
