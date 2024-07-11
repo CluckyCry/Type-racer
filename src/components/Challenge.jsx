@@ -23,16 +23,23 @@ export default function Challenge({ quote, setSelect, canSelect }) {
     let splitCurrentW = splitQuote[typedWords].split("");
     let textSplit = event.target.value.split("");
 
-    if (event.target.value == "") 
-      spanEle.style.color = 'black'
+    if (event.target.value == "") spanEle.style.color = "black";
 
+
+    // starting sanity check from here:
     textSplit.forEach((alphabet, index) => {
-      if ((alphabet == " ") || (event.target.value == "")) return;
-      if (splitCurrentW[index] == alphabet) 
-        spanEle.style.color = "green"
-      else
-        spanEle.style.color = "red"
-    })
+      if (alphabet == " " || event.target.value == "") return;
+      if (splitCurrentW[index] == alphabet) {
+        let sanity = true;
+
+        // further sanity check:
+        for (let i = 0; i < index; i++)
+          if (splitCurrentW[i] != textSplit[i]) sanity = false;
+
+        if (!sanity) spanEle.style.color = "red"; // if sanity check isn't passed, set the color to red
+        else spanEle.style.color = "green"; // setting the color to green from default check
+      } else spanEle.style.color = "red"; // setting the color to red if initial sanity check isn't passed
+    });
 
     hasStarted.current = true;
     setText(event.target.value);
@@ -45,14 +52,14 @@ export default function Challenge({ quote, setSelect, canSelect }) {
       setText("");
       if (typedWords == splitQuote.length - 1) {
         hasStarted.current = false;
-        setTimeout(() => setSelect(true), 2000)
+        setTimeout(() => setSelect(true), 2000);
       }
     }
   }
 
   useEffect(() => {
     let secondsPassed = 0;
-    let wpm = 0
+    let wpm = 0;
     setWpm(0);
     const interval = setInterval(() => {
       if (!hasStarted.current) return;
