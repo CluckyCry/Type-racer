@@ -25,7 +25,6 @@ export default function Challenge({ quote, setSelect, canSelect }) {
 
     if (event.target.value == "") spanEle.style.color = "black";
 
-
     // starting sanity check from here:
     textSplit.forEach((alphabet, index) => {
       if (alphabet == " " || event.target.value == "") return;
